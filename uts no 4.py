@@ -1,29 +1,28 @@
-class BMI:
-    def __init__(self, weight, height):
-        self.weight = weight  # Berat badan dalam kilogram
-        self.height = height  # Tinggi badan dalam meter
+class orang:
+    def __init__(self, nama, tinggi_cm, berat_kg):
+        self.nama = nama
+        self.tinggi_cm = tinggi_cm
+        self.berat_kg = berat_kg
 
-    def BMI_Value(self):
-        # Menghitung nilai BMI
-        bmi = self.weight / (self.height ** 2)
+    def hitung_bmi(self):
+        tinggi_m = self.tinggi_cm / 100
+        bmi = self.berat_kg / (tinggi_m ** 2)
         return bmi
 
-    def __eq__(self, other):
-        # Membandingkan berat dan tinggi dari dua objek BMI
-        return self.weight == other.weight and self.height == other.height
+    def __str__(self):
+        return f"Nama: {self.nama}\nTinggi: {self.tinggi_cm} cm\nBerat: {self.berat_kg} kg"
 
-# Contoh penggunaan:
+def main():
+    # Membuat objek Person
+    orang1 = orang("Alief", 172, 60)
+
+    # Menampilkan informasi tentang orang pertama
+    print("Informasi tentang orang pertama:")
+    print(orang1)
+
+    # Menghitung dan menampilkan BMI (Body Mass Index) dari orang pertama
+    bmi = orang1.hitung_bmi()
+    print(f"\nBMI (Body Mass Index): {bmi:.2f}")
+
 if __name__ == "__main__":
-    # Membuat objek BMI
-    person1 = BMI(75, 1.75)  # Berat: 75 kg, Tinggi: 1.75 m
-    person2 = BMI(80, 1.79)  # Berat: 80 kg, Tinggi: 1.79 m
-
- # Menggunakan method BMI_Value untuk mendapatkan nilai BMI
-    print("Nilai BMI person1:", person1.BMI_Value())
-    print("Nilai BMI person2:", person2.BMI_Value())
-
-    # Membandingkan dua objek BMI
-    if person1 == person2:
-        print("person1 memiliki BMI yang sama dengan person2")
-    else:
-        print("person1 tidak memiliki BMI yang sama dengan person2")
+    main()
